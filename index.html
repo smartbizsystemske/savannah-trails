@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savannah Trails | African Safari Adventures</title>
+    <meta name="description" content="Experience the magic of the African Savannah with luxury eco-tourism and wildlife safaris.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --sand: #F5E6D3;
+            --orange: #E67E22;
+            --orange-dark: #D35400;
+            --acacia: #4A5D4E;
+            --charcoal: #2C2C2C;
+            --white: #FFFFFF;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--sand);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        section {
+            padding: 80px 5%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 5%;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: var(--charcoal);
+            padding: 10px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: 900;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://picsum.photos/id/1020/1920/1080') center/cover no-repeat;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--orange);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--orange);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--orange-dark);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Organic Separators */
+        .separator {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 2;
+        }
+
+        .separator svg {
+            width: 100%;
+            height: 80px;
+            fill: var(--sand);
+        }
+
+        /* Destinations */
+        #destinations {
+            background-color: var(--sand);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--acacia);
+        }
+
+        .section-header .line {
+            width: 80px;
+            height: 3px;
+            background: var(--orange);
+            margin: 15px auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-body h3 {
+            margin-bottom: 10px;
+            color: var(--acacia);
+        }
+
+        /* Safari Packages */
+        #packages {
+            background-color: var(--acacia);
+            color: var(--white);
+        }
+
+        #packages h2 {
+            color: var(--white);
+        }
+
+        .pkg-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            text-align: center;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .pkg-card.featured {
+            background: var(--orange);
+            transform: scale(1.05);
+        }
+
+        .pkg-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .pkg-features {
+            margin-bottom: 30px;
+        }
+
+        .pkg-features li {
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1) rotate(2deg);
+            filter: brightness(0.8);
+        }
+
+        /* Testimonials Carousel */
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .slide p {
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .slide span {
+            font-weight: 700;
+            color: var(--orange);
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--acacia);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 60px 5% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+            padding-left: 5px;
+        }
+
+        .newsletter input {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--orange);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .pkg-card.featured {
+                transform: scale(1);
+            }
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header id="main-header">
+        <nav>
+            <a href="#" class="logo">Savannah Trails</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle">☰</div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Awaken Your Wild Spirit</h1>
+            <p>Immerse yourself in the breathtaking landscapes and legendary wildlife of the African Savannah.</p>
+            <a href="#packages" class="btn">Start Your Adventure</a>
+        </div>
+        <div class="separator">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,213.3C672,203,768,149,864,149.3C960,149,1056,203,1152,202.7C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section id="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Breathtaking Destinations</h2>
+                <div class="line"></div>
+                <p>Discover the most iconic safari spots in the world.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-img">
+                        <img loading="lazy" src="https://picsum.photos/id/1024/600/400" alt="Serengeti Plains">
+                    </div>
+                    <div class="card-body">
+                        <h3>Serengeti National Park</h3>
+                        <p>Witness the Great Migration where millions of wildebeest and zebras roam the vast plains of Tanzania.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img loading="lazy" src="https://picsum.photos/id/1018/600/400" alt="Okavango Delta">
+                    </div>
+                    <div class="card-body">
+                        <h3>Okavango Delta</h3>
+                        <p>Explore the lush waterways of Botswana, home to hippos, elephants, and rare aquatic wildlife.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img loading="lazy" src="https://picsum.photos/id/1025/600/400" alt="Maasai Mara">
+                    </div>
+                    <div class="card-body">
+                        <h3>Maasai Mara</h3>
+                        <p>Discover the rich culture of the Maasai people and the dense concentration of predators in Kenya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safari Packages -->
+    <section id="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Safari Packages</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid-3">
+                <div class="pkg-card">
+                    <h3>The Explorer</h3>
+                    <span class="price">$1,499</span>
+                    <ul class="pkg-features">
+                        <li>5 Days Accommodation</li>
+                        <li>Guided Bush Walks</li>
+                        <li>All Meals Included</li>
+                        <li>Standard Safari Vehicle</li>
+                    </ul>
+                    <a href="#contact" class="btn">Select Plan</a>
+                </div>
+                <div class="pkg-card featured">
+                    <h3>Savannah King</h3>
+                    <span class="price">$2,999</span>
+                    <ul class="pkg-features">
+                        <li>10 Days Luxury Lodge</li>
+                        <li>Private Hot Air Balloon</li>
+                        <li>Professional Photography</li>
+                        <li>Premium Open-top 4x4</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="background: var(--white); color: var(--orange);">Select Plan</a>
+                </div>
+                <div class="pkg-card">
+                    <h3>Eco-Warrior</h3>
+                    <span class="price">$1,899</span>
+                    <ul class="pkg-features">
+                        <li>7 Days Tent Camping</li>
+                        <li>Conservation Workshop</li>
+                        <li>Wildlife Tracking</li>
+                        <li>Solar Powered Camps</li>
+                    </ul>
+                    <a href="#contact" class="btn">Select Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wildlife Gallery -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Wildlife Gallery</h2>
+                <div class="line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img loading="lazy" src="https://picsum.photos/id/219/800/800" alt="Tiger in tall grass"></div>
+                <div class="gallery-item"><img loading="lazy" src="https://picsum.photos/id/237/800/800" alt="Elephant in savannah"></div>
+                <div class="gallery-item"><img loading="lazy" src="https://picsum.photos/id/433/800/800" alt="Zebra pattern"></div>
+                <div class="gallery-item"><img loading="lazy" src="https://picsum.photos/id/577/800/800" alt="Lion pride"></div>
+                <div class="gallery-item"><img loading="lazy" src="https://picsum.photos/id/582/800/800" alt="Giraffe sunset"></div>
+                <div class="gallery-item"><img loading="lazy" src="https://picsum.photos/id/593/800/800" alt="Leopard eyes"></div>
+                <div class="gallery-item"><img loading="lazy" src="https://picsum.photos/id/616/800/800" alt="Rhino in dust"></div>
+                <div class="gallery-item"><img loading="lazy" src="https://picsum.photos/id/659/800/800" alt="Antelope run"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Traveler Stories</h2>
+                <div class="line"></div>
+            </div>
+            <div class="testimonial-slider">
+                <div class="slides-container" id="slider">
+                    <div class="slide">
+                        <p>"The most spiritual experience of my life. Seeing the sunset over the Serengeti changed me forever."</p>
+                        <span>— Sarah Jenkins, UK</span>
+                    </div>
+                    <div class="slide">
+                        <p>"Savannah Trails provided the perfect blend of luxury and raw adventure. The guides were world-class."</p>
+                        <span>— Michael Chen, Singapore</span>
+                    </div>
+                    <div class="slide">
+                        <p>"An eco-friendly approach that truly respects the wildlife. I'll be coming back every year."</p>
+                        <span>— Elena Rodriguez, Spain</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <div class="line"></div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Adventure Awaits</h3>
+                    <p>Have questions about our packages or custom itineraries? Drop us a message and our safari experts will guide you.</p>
+                    <br>
+                    <p>📍 Nairobi, Kenya<br>📞 +254 700 000 000<br>✉️ info@savannahtrails.com</p>
+                </div>
+                <form id="safariForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required aria-label="Name">
+                        <span class="error-message" id="nameError">Please enter your name.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com" required aria-label="Email">
+                        <span class="error-message" id="emailError">Please enter a valid email.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" placeholder="Tell us about your dream safari..." required aria-label="Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Savannah Trails</h4>
+                    <p>Connecting people with nature through sustainable and luxury safari experiences since 2010.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#packages">Safari Packages</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Get monthly wildlife updates.</p>
+                    <input type="email" placeholder="Your Email">
+                    <button class="btn" style="width: 100%; padding: 10px;">Subscribe</button>
+                </div>
+            </div>
+            <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                <p>&copy; 2026 Savannah Trails. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Extras -->
+    <div id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img src="" alt="Zoomed view">
+    </div>
+
+    <div class="back-to-top" id="backToTop" aria-label="Back to Top">
+        ▲
+    </div>
+
+    <script>
+        // --- 1. Sticky Navbar & Active Link ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Show/Hide Back to Top
+            if (window.scrollY > 500) {
+                document.getElementById('backToTop').classList.add('show');
+            } else {
+                document.getElementById('backToTop').classList.remove('show');
+            }
+        });
+
+        // Back to top click
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- 2. Lightbox Gallery ---
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const closeLightbox = document.querySelector('.close-lightbox');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.src;
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Stop scroll
+            });
+        });
+
+        closeLightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close lightbox on background click
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox) {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // --- 3. Testimonial Slider ---
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showNextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        setInterval(showNextSlide, 5000); // Auto-advance every 5s
+
+        // --- 4. Form Validation ---
+        const contactForm = document.getElementById('safariForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            let isValid = true;
+
+            if (name.length < 2) {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+            }
+
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+
+            if (isValid) {
+                alert('Thank you for your inquiry, ' + name + '! We will contact you shortly.');
+                contactForm.reset();
+            }
+        });
+
+        // --- 5. Mobile Menu Toggle ---
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            const isVisible = navLinks.style.display === 'flex';
+            if(isVisible) {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'var(--charcoal)';
+                navLinks.style.padding = '20px';
+                navLinks.style.textAlign = 'center';
+            }
+        });
+
+        // Hide mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth < 992) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
